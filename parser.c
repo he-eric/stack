@@ -262,7 +262,7 @@ void parse_file ( char * filename,
       line[strlen(line)-1]='\0';      
       sscanf(line, "%lf %lf %lf", &x, &y, &z);
       tmp = make_scale(x, y, z);
-      matrix_mult(tmp, sk->data[sk->top]);
+      matrix_mult( sk->data[sk->top], tmp );
       //I need to do something here??
       //copy tmp to top
       copy_matrix( tmp, sk->data[sk->top]);
@@ -285,7 +285,7 @@ void parse_file ( char * filename,
       //line[strlen(line)-1] = '\0';
       sscanf(line, "%lf %lf %lf", &x, &y, &z);
       tmp = make_translate(x, y, z);
-      matrix_mult(tmp, sk->data[sk->top]);
+      matrix_mult( sk->data[sk->top], tmp );
       //copy tmp to top
       copy_matrix( tmp, sk->data[sk->top]);
       //print_matrix(transform);
@@ -308,7 +308,7 @@ void parse_file ( char * filename,
       tmp = make_rotX( angle);
       matrix_mult(tmp, sk->data[sk->top]);
       //copy tmp to top
-      copy_matrix( tmp, sk->data[sk->top]);
+      copy_matrix( sk->data[sk->top], tmp );
     }
     /*
     else if ( strncmp(line, "yrotate", strlen(line)) == 0 ) {
@@ -328,7 +328,7 @@ void parse_file ( char * filename,
       tmp = make_rotY( angle);
       matrix_mult(tmp, sk->data[sk->top]);
       //copy tmp to top
-      copy_matrix( tmp, sk->data[sk->top]);
+      copy_matrix( sk->data[sk->top], tmp );
     }
     /*
     else if ( strncmp(line, "zrotate", strlen(line)) == 0 ) {
@@ -348,7 +348,7 @@ void parse_file ( char * filename,
       tmp = make_rotZ( angle);
       matrix_mult(tmp, sk->data[sk->top]);
       //copy tmp to top
-      copy_matrix( tmp, sk->data[sk->top]);
+      copy_matrix( sk->data[sk->top], tmp );
     }
     /*
     else if ( strncmp(line, "ident", strlen(line)) == 0 ) {
