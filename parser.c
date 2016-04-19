@@ -306,9 +306,9 @@ void parse_file ( char * filename,
       sscanf(line, "%lf", &angle);
       angle = angle * (M_PI / 180);
       tmp = make_rotX( angle);
-      matrix_mult(tmp, sk->data[sk->top]);
+      matrix_mult( sk->data[sk->top], tmp );
       //copy tmp to top
-      copy_matrix( sk->data[sk->top], tmp );
+      copy_matrix( tmp, sk->data[sk->top] );
     }
     /*
     else if ( strncmp(line, "yrotate", strlen(line)) == 0 ) {
@@ -326,9 +326,9 @@ void parse_file ( char * filename,
       sscanf(line, "%lf", &angle);
       angle = angle * (M_PI / 180);
       tmp = make_rotY( angle);
-      matrix_mult(tmp, sk->data[sk->top]);
+      matrix_mult( sk->data[sk->top], tmp );
       //copy tmp to top
-      copy_matrix( sk->data[sk->top], tmp );
+      copy_matrix( tmp, sk->data[sk->top] );
     }
     /*
     else if ( strncmp(line, "zrotate", strlen(line)) == 0 ) {
@@ -346,9 +346,9 @@ void parse_file ( char * filename,
       sscanf(line, "%lf", &angle);
       angle = angle * (M_PI / 180);
       tmp = make_rotZ( angle);
-      matrix_mult(tmp, sk->data[sk->top]);
+      matrix_mult( sk->data[sk->top], tmp );
       //copy tmp to top
-      copy_matrix( sk->data[sk->top], tmp );
+      copy_matrix( tmp, sk->data[sk->top] );
     }
     /*
     else if ( strncmp(line, "ident", strlen(line)) == 0 ) {
